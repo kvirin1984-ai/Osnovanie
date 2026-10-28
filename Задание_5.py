@@ -25,6 +25,34 @@ def update_base2_label(event):
     base2_label.config(text=name)
 
 
+def exchange():
+    target_code = target_combobox.get().strip()
+    base_code = base_combobox.get().strip()
+
+    if target_code and base_code:
+        try:
+            response = requests.get(f'https://open.er-api.com/v6/latest/{base_code}')
+            response.raise_for_status()
+            data = response.json()
+
+            if target_code in data['rates']:
+                exchange_rate = data['rates'][target_code]
+
+                base = currencies[base_code]
+
+                target = currencies[target_code]
+                mb.showinfo('Курс обмена',
+                            f'Курс: {exchange_rate:.2f} {target} за 1 {base}')
+
+            else:
+                mb.showerror('Ошибка',
+                             f'Валюта {target_code} не найдена')
+
+        except Exception as err:
+            mb.showerror('Ошибка', err)
+
+    else:
+        mb.showwarning('Внимание', 'Введите код валюты')
 
 currencies = {
     'EUR': 'Евро',
