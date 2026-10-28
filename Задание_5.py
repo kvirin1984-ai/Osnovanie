@@ -6,6 +6,41 @@ import json
 import pprint
 from requests.packages import target
 
+def update_currency_label(event):
+    code = target_combobox.get()
+    # code = combobox.get()
+    name = currencies[code]
+    target_label.config(text=name)
+
+
+def update_base_label(event):
+    code = base_combobox.get()
+    name = currencies[code]
+    base_label.config(text=name)
+
+
+def update_base2_label(event):
+    code = base2_combobox.get()
+    name = currencies[code]
+    base2_label.config(text=name)
+
+
+
+currencies = {
+    'EUR': 'Евро',
+    'USD': 'Американский доллар',
+    'JPY': 'Японская йена',
+    'GBP': 'Фунт стерлингов',
+    'AUD': 'Австралийский доллар',
+    'RUB': 'Российский рубль',
+    'CAD': 'Канадский доллар',
+    'CHF': 'Швейцарский франк',
+    'CNY': 'Китайский юань',
+    'KZT': 'Казахский тенге',
+    'UZS': 'Узбекский сум'
+}
+
+
 window = Tk()
 window.title('Курс обмена валют')
 WIDTH = window.winfo_screenwidth()
