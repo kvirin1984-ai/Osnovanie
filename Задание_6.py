@@ -4,6 +4,40 @@ import requests
 from PIL import Image, ImageTk
 
 
+def update_label(event):
+    code = combobox.get()
+    name = crypto[code]
+    label0.config(text=name)
+
+
+def exchange():
+    target_crypto = combobox.get().strip()
+    if target_crypto:
+        try:
+            response = requests.get(f'https://api.coingecko.com/api/v3/'
+                                    f'simple/price?ids={target_crypto}&vs_currencies=usd')
+            response.raise_for_status()
+            data = response.json()
+            target = data[target_crypto]['usd']
+            label1.config(text=f'Курс = 1 {target_crypto} \nза {target:.2f} долларов США (USD)')
+        except Exception as err:
+            label1.config(text=f'Ошибка {err}')
+    else:
+        label1.config(text='Введите код криптовалюты')
+
+
+crypto = {
+    'bitcoin': 'Биткоин (BTC)',
+    'ethereum': 'Эфириум (ETH)',
+    'tether': 'Тетер (USDT)',
+    'binancecoin': 'Бинанскоин (BNB)',
+    'solana': 'Солана (SOL)',
+    'ripple': 'Райпл (XRP)',
+    'dogecoin': 'Догкоин (DOGE)',
+    'tron': 'Трон (TRX)'
+}
+
+
 window = Tk()
 window.title('Конвертер криптовалют к доллару США')
 pil_image = Image.open('Dollar.png')
