@@ -16,7 +16,24 @@ X = 500
 Y = 400
 window.geometry(f"{X}x{Y}+{WIDTH // 2 - X // 2}+{HEIGHT // 2 - Y // 2 - 25}")
 
+style = ttk.Style()
+style.theme_use('clam')
 
+style.configure(
+    "TCombobox",
+    fieldbackground="#7AD0FF",
+    background="#7AD0FF",
+    foreground="black",
+    arrowcolor="black",
+    bordercolor="black",
+    lightcolor="#7AD0FF",
+    darkcolor="#7AD0FF",
+    selectbackground="#7AD0FF",
+    selectforeground="black",
+)
+style.map('TCombobox',
+          fieldbackground=[('readonly', '#7AD0FF'), ('disabled', '#7AD0FF')],
+          background=[('readonly', '#7AD0FF'), ('disabled', '#7AD0FF')])
 
 
 frame = Frame(window, bg='#7AD0FF')
