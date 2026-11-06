@@ -37,7 +37,6 @@ crypto = {
     'tron': 'Трон (TRX)'
 }
 
-
 window = Tk()
 window.title('Конвертер криптовалют к доллару США')
 pil_image = Image.open('Dollar.png')
@@ -69,7 +68,6 @@ style.map('TCombobox',
           fieldbackground=[('readonly', '#7AD0FF'), ('disabled', '#7AD0FF')],
           background=[('readonly', '#7AD0FF'), ('disabled', '#7AD0FF')])
 
-
 frame = Frame(window, bg='#7AD0FF')
 frame.grid(row=0, column=0)
 
@@ -77,7 +75,7 @@ label = Label(frame, text='Целевая ----->> \n криптовалюта',
               font=('Segoe Print', 16, 'bold'), bg='#7AD0FF')
 label.grid(row=0, column=1, pady=10)
 
-combobox = ttk.Combobox(frame, width=25, state='readonly',values=list(crypto.keys()))
+combobox = ttk.Combobox(frame, width=25, state='readonly', values=list(crypto.keys()))
 combobox.grid(row=0, column=2, pady=10)
 combobox.bind('<<ComboboxSelected>>', update_label)
 
