@@ -4,6 +4,28 @@ import requests
 from PIL import Image, ImageTk
 
 
+crypto = {
+    'bitcoin': 'Биткоин (BTC)',
+    'ethereum': 'Эфириум (ETH)',
+    'tether': 'Тетер (USDT)',
+    'binancecoin': 'Бинанскоин (BNB)',
+    'solana': 'Солана (SOL)',
+    'ripple': 'Райпл (XRP)',
+    'dogecoin': 'Догкоин (DOGE)',
+    'tron': 'Трон (TRX)'
+}
+
+currencies = {
+    'eur': 'Евро',
+    'jpy': 'Японская йена',
+    'gbp': 'Фунт стерлингов',
+    'aud': 'Австралийский доллар',
+    'rub': 'Российский рубль',
+    'cad': 'Канадский доллар',
+    'usd': 'Американский доллар',
+    'cny': 'Китайский юань'
+}
+
 window = Tk()
 window.title('Конвертер криптовалют')
 pil_image = Image.open('btc2.png')
