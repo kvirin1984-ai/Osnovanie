@@ -4,6 +4,35 @@ import requests
 from PIL import Image, ImageTk
 
 
+def update_label2(event):
+    code = combobox.get()
+    name = currencies[code]
+    label2.config(text=name)
+
+
+def update_label3(event):
+    code = combobox0.get()
+    name = crypto[code]
+    label3.config(text=name)
+
+
+def exchange():
+    base_currency = combobox.get().strip()
+    target_crypto = combobox0.get().strip()
+    if target_crypto and base_currency:
+        try:
+            name = currencies[base_currency]
+            response = requests.get(f'https://api.coingecko.com/api/v3/'
+                                    f'simple/price?ids={target_crypto}&vs_currencies={base_currency}')
+            response.raise_for_status()
+            data = response.json()
+            target = data[target_crypto][base_currency]
+            label1.config(text=f'Курс = 1 {target_crypto} \nза {target} {name} ({base_currency})')
+        except Exception as err:
+            label1.config(text=f'Ошибка {err}')
+    else:
+        label1.config(text='Введите код валюты и выберите криптовалюту')
+
 crypto = {
     'bitcoin': 'Биткоин (BTC)',
     'ethereum': 'Эфириум (ETH)',
