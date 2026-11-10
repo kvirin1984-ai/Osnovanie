@@ -33,6 +33,7 @@ def exchange():
     else:
         label1.config(text='Введите код валюты и выберите криптовалюту')
 
+
 crypto = {
     'bitcoin': 'Биткоин (BTC)',
     'ethereum': 'Эфириум (ETH)',
@@ -93,7 +94,7 @@ label = Label(frame, text='Базовая ----->> \n валюта',
               font=('Segoe Print', 16, 'bold'), bg='#7AD0FF', fg='#5D2AB7')
 label.grid(row=0, column=1, pady=10)
 
-combobox = ttk.Combobox(frame, width=25, state ='readonly',values=list(currencies.keys()))
+combobox = ttk.Combobox(frame, width=25, state='readonly', values=list(currencies.keys()))
 combobox.grid(row=0, column=2, pady=10)
 combobox.bind('<<ComboboxSelected>>', update_label2)
 
@@ -105,7 +106,7 @@ label0 = Label(frame, text='Целевая ----->> \n криптовалюта',
                font=('Segoe Print', 16, 'bold'), bg='#7AD0FF', fg='#B72818')
 label0.grid(row=2, column=1, pady=10)
 
-combobox0 = ttk.Combobox(frame, width=25, state='readonly',values=list(crypto.keys()))
+combobox0 = ttk.Combobox(frame, width=25, state='readonly', values=list(crypto.keys()))
 combobox0.grid(row=2, column=2, pady=10)
 combobox0.bind('<<ComboboxSelected>>', update_label3)
 
@@ -122,6 +123,5 @@ label1 = Label(frame, width=43, height=3, bg='#21C5CF',
                text='Выберите базовую валюту и криптовалюту',
                font=('Bahnschrift Condensed', 16, 'bold'))
 label1.grid(row=5, column=1, columnspan=3, padx=42, pady=20)
-
 
 window.mainloop()
